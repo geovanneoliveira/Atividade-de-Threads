@@ -1,0 +1,36 @@
+package jantar2;
+
+public class Main {
+
+	
+	
+	public static void main(String[] args) {
+		
+		Mesa mesa = new Mesa();
+		
+		new Filosofos(mesa, 0).start();
+		new Filosofos(mesa, 1).start();
+		new Filosofos(mesa, 2).start();
+		new Filosofos(mesa, 3).start();
+		new Filosofos(mesa, 4).start();
+		
+/*		<----SAIDA---->
+		asdasdasdsa
+		Filosofo 0 Está pensando...
+		Filosofo 3 Está pensando...
+		Filosofo 2 Está pensando...
+		Filosofo 1 Está pensando...
+		Filosofo 4 Está pensando...
+		Filosofo 2 Está comendo....
+		Filosofo 0 Está comendo....
+		Filosofo 2 Acabou de Comer
+		Filosofo 2 Está pensando...
+		Filosofo 0 Acabou de Comer
+		Filosofo 3 Está comendo....
+		Filosofo 1 Está comendo....
+		Filosofo 0 Está pensando...
+		
+		</----SAIDA---->*/
+		
+	}
+}
