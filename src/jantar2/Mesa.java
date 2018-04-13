@@ -12,23 +12,15 @@ public class Mesa {
 	}
 	
 		
-	private boolean testeGarfos(int id){
-		
-		if(!(garfoDireito(id) && garfoEsquerdo(id))) {
-			return false;
-		}
-		
-		return true;
-	}
 	
 	
-	private boolean garfoDireito(int id) { //STATUS DO GARFO DIREITO
+	private boolean statusGarfoDireito(int id) { //STATUS DO GARFO DIREITO
 			
 		return this.garfos[id];	
 	}
 	
 	
-	private boolean garfoEsquerdo(int id) { //STATUS DO GARFO ESQUERDO
+	private boolean statusGarfoEsquerdo(int id) { //STATUS DO GARFO ESQUERDO
 
 		if(id == 4) return this.garfos[0];
 		
@@ -36,22 +28,7 @@ public class Mesa {
 	}
 	
 		
-	private void pegarGarfoDireito(int id) { //PEGAR GARFO DIREITO
-		this.garfos[id] = false;
-	}
-	
-	
-	private void pegarGarfoEsquerdo(int id) { //PEGAR GARFO ESQUERDO
-		
-		if(id == 4) {
-			
-			this.garfos[0] = false;
-		}else {
-			
-			this.garfos[id+1] = false;
-		}
-	}
-	
+
 	private void retornarGarfoDireito(int id) { //COLOCA NA MESA O GARFO DIREITO
 		this.garfos[id] = true;
 	}
@@ -72,30 +49,39 @@ public class Mesa {
 	
 	/*<--METODOS PUBLICOS-->*/
 	
-	
-	public  void pegarGarfos(Filosofos f) {
-		int id = f.getIdd();
-	
-			if(!testeGarfos(id)) {
-				//retornarGarfos(id);
-				System.out.println("Filosofo " + id +" Não conseguiu pegar os garfos!");
-				//f.pensar();
-			} else{
-				System.out.println("Filosofo " + id +" Pegou os garfos");
-				pegarGarfoEsquerdo(id);
-				pegarGarfoDireito(id);
-				f.comer();				//depois que ele pegou os garfos ele  mesmo q come
-				this.retornarGarfos(id); 
-			}
+	public synchronized boolean testeGarfos(int id){ //TESTE GERAL
 		
+		if(!(statusGarfoDireito(id) && statusGarfoEsquerdo(id))) {
+			return false;
+		}
+		
+		return true;
 	}
 	
-	public synchronized void retornarGarfos(int id) {
+	
+	
+	public synchronized void pegarGarfoDireito(int id) { //PEGAR GARFO DIREITO
+		this.garfos[id] = false;
+	}
+	
+	
+	public synchronized void pegarGarfoEsquerdo(int id) { //PEGAR GARFO ESQUERDO
 		
-			retornarGarfoEsquerdo(id);
-			retornarGarfoDireito(id);
-			System.out.println("Filosofo " + id +" Acabou de Comer");
-			notify();
+		if(id == 4) {
+			
+			this.garfos[0] = false;
+		}else {
+			
+			this.garfos[id+1] = false;
+		}
+	}
+	
+	public synchronized void retornarGarfos(int id) { //RETORNAR OS GARFOS
+		
+			if((statusGarfoEsquerdo(id))) retornarGarfoEsquerdo(id);
+			if((statusGarfoDireito(id)))   retornarGarfoDireito(id);
+			
+			System.out.println("Filosofo " + id +" Retornou os Garfos");
 		
 	}
 	
