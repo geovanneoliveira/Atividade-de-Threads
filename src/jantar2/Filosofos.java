@@ -16,13 +16,11 @@ public class Filosofos extends Thread{
 	public void run(){
 		while(true) {
 			this.pensar();
-			this.mesa.pegarGarfos(this);
-			//this.comer();
-			//this.mesa.retornarGarfos(this.id);a
+			this.tentarComer();
 		}
 	}
 	
-	public void pensar() {
+	private void pensar() {
 		System.out.println(nome + " Está pensando...");
 		try {
 			sleep((this.id + 1) * 1000);
@@ -31,7 +29,22 @@ public class Filosofos extends Thread{
 		}
 	}
 	
-	public void comer() {
+	
+	private void tentarComer() {
+		
+		mesa.pegarGarfoDireito(this.id);
+		mesa.pegarGarfoEsquerdo(this.id);
+		
+		if(mesa.testeGarfos(this.id)) {
+			
+			comer();
+		}
+		
+		retornarGarfos();
+		
+	}
+	
+	private void comer() {
 		System.out.println(nome + " Está comendo....");
 		try {
 			sleep((this.id + 1) * 3000);
@@ -40,8 +53,9 @@ public class Filosofos extends Thread{
 		}
 	}
 	
-	public int getIdd(){
-		return this.id;
+	private void retornarGarfos() {
+		
+		mesa.retornarGarfos(this.id);
 	}
 	
 	
