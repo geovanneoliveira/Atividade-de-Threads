@@ -14,13 +14,19 @@ public class Filosofos extends Thread{
 	}
 	
 	public void run(){
+		
 		while(true) {
 			this.pensar();
-			this.mesa.pegarGarfos(this);
-			//this.comer();
-			//this.mesa.retornarGarfos(this.id);a
+			this.pegarGarfos();
+			this.comer();
+			this.retornarGarfos(this.id);
 		}
 	}
+	
+	public void pegarGarfos() {
+		mesa.pe
+	}
+	
 	
 	public void pensar() {
 		System.out.println(nome + " Está pensando...");
