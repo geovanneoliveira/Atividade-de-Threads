@@ -21,7 +21,7 @@ public class Filosofos extends Thread{
 	}
 	
 	private void pensar() {
-		System.out.println(nome + " Está pensando...");
+		System.out.println(nome + " Esta pensando...\n");
 		try {
 			sleep((this.id + 1) * 1000);
 		} catch (Exception e) {
@@ -30,22 +30,20 @@ public class Filosofos extends Thread{
 	}
 	
 	
-	private void tentarComer() {
-		
-		mesa.pegarGarfoDireito(this.id);
-		mesa.pegarGarfoEsquerdo(this.id);
-		
-		if(mesa.testeGarfos(this.id)) {
-			
+	private synchronized void tentarComer() {
+		System.out.println(nome + " Esta tentando comer.");
+		if(mesa.podePegarOs2(this.id)){
+			mesa.pegarGarfoDireito(this.id);
+			mesa.pegarGarfoEsquerdo(this.id);
 			comer();
+			retornarGarfos();
+		}else{
+			System.out.println(nome + " Nao conseguiu comer");
 		}
-		
-		retornarGarfos();
-		
 	}
 	
 	private void comer() {
-		System.out.println(nome + " Está comendo....");
+		System.out.println(nome + " Esta comendo....\n");
 		try {
 			sleep((this.id + 1) * 3000);
 		} catch (Exception e) {
