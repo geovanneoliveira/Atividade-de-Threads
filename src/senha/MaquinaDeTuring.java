@@ -1,4 +1,5 @@
-﻿
+﻿package senha;
+
 public class MaquinaDeTuring extends Thread{
 	
 	private int id;

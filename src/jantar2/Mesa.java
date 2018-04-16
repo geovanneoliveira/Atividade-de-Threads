@@ -45,7 +45,7 @@ public class Mesa {
 			System.err.println("garfo DIREITO esta sendo usado");
 			return false;
 		} else if(!statusGarfoDireito(id)){
-			System.err.out.println("garfo ESQUERDO esta sendo usado");
+			System.err.println("garfo ESQUERDO esta sendo usado");
 			return false;
 		}
 		return true;
@@ -75,11 +75,11 @@ public class Mesa {
 		}
 
 		if(this.garfos[id_] == false){
-			System.out.println("garfo DIREITO esta sendo usado -TEM ALGO ERRADO BROW-");
+			System.err.println("garfo DIREITO esta sendo usado -TEM ALGO ERRADO BROW-");
 			return false;
 		}else{
 			this.garfos[id_] = false;
-			System.out.println(id + " pegou garfo DIREITO");
+			System.err.println(id + " pegou garfo DIREITO");
 			return true;
 		}
 	}
