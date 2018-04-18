@@ -20,7 +20,7 @@ public class Main {
 		ArrayList<String> parques = new ArrayList<String>();
 		parques.add("Carrocel");
 		parques.add("Roda Gigante");
-		parques.add("Auto Pista");
+		parques.add("Carrinho de Bate Bate");
 		parques.add("Montanha Russa");
 		parques.add("Kamikase");
 		return parques;

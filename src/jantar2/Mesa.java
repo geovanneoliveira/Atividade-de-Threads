@@ -42,10 +42,10 @@ public class Mesa {
 	
 	public synchronized boolean podePegarOs2(int id){
 		if(!statusGarfoEsquerdo(id)){
-			System.err.println("garfo DIREITO esta sendo usado");
+			System.out.println(id + " O seu garfo ESQUERDO esta sendo usado");
 			return false;
 		} else if(!statusGarfoDireito(id)){
-			System.err.println("garfo ESQUERDO esta sendo usado");
+			System.out.println(id + " O seu garfo DIREITO esta sendo usado");
 			return false;
 		}
 		return true;
@@ -54,8 +54,8 @@ public class Mesa {
 	/*<--METODOS PUBLICOS-->*/
 	
 	public synchronized boolean pegarGarfoDireito(int id) { //PEGAR GARFO DIREITO
-		if(this.garfos[id] == false){
-			System.out.println("garfo ESQUERDO esta sendo usado -TEM ALGO ERRADO BROW-");
+		if(this.garfos[id] == false){ //SEGURANÇA
+			System.err.println("garfo ESQUERDO esta sendo usado -TEM ALGO ERRADO BROW-");
 			return false;
 		}else{
 			this.garfos[id] = false;
@@ -74,12 +74,12 @@ public class Mesa {
 			id_ +=1;
 		}
 
-		if(this.garfos[id_] == false){
+		if(this.garfos[id_] == false){ //SEGURANÇA
 			System.err.println("garfo DIREITO esta sendo usado -TEM ALGO ERRADO BROW-");
 			return false;
 		}else{
 			this.garfos[id_] = false;
-			System.err.println(id + " pegou garfo DIREITO");
+			System.out.println(id + " pegou garfo DIREITO");
 			return true;
 		}
 	}

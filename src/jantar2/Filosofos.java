@@ -38,7 +38,7 @@ public class Filosofos extends Thread{
 			comer();
 			retornarGarfos();
 		}else{
-			System.out.println(nome + " Nao conseguiu comer");
+			System.out.println(nome + " NAO conseguiu comer");
 		}
 	}
 	

@@ -16,7 +16,7 @@ public class MaquinaDeTuring extends Thread{
 	
 	public void run() {
 		
-		System.out.println("Thread " + this.id + "Iniciada de " + this.inicio + " ate " + this.fim);
+		System.out.println("Thread " + this.id + " Iniciada de " + this.inicio + " ate " + this.fim);
 		
 		for(long i = this.inicio; i < this.fim && Main.buscando ; i++) {
 
@@ -28,7 +28,7 @@ public class MaquinaDeTuring extends Thread{
 				break;
 			}
 			
-			System.out.println("Thread " + this.id + " Testou = " + possivelSenha);
+			//System.out.println("Thread " + this.id + " Testou = " + possivelSenha);
 		}
 	}	
 	
